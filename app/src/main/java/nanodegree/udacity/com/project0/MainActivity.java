@@ -1,5 +1,6 @@
 package nanodegree.udacity.com.project0;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -22,57 +23,18 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    }
 
-        button = (Button) findViewById(R.id.spotify_streamer_button);
-        button2 = (Button) findViewById(R.id.scores_app_button);
-        button3 = (Button) findViewById(R.id.library_app_button);
-        button4 = (Button) findViewById(R.id.build_it_bigger_button);
-        button5 = (Button) findViewById(R.id.xyz_reader_button);
-        button6 = (Button) findViewById(R.id.capstone_button);
+    public void sendMessage(View view) {
+        Button button = (Button) view;
+        String buttonText = (String) button.getText();
 
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "This button will launch my Spotify Streamer app!",
-                        Toast.LENGTH_LONG).show();
-            }
-        });
+        Context context = getApplicationContext();
+        CharSequence text = getString(R.string.open_app) + " " + buttonText;
+        int duration = Toast.LENGTH_SHORT;
 
-        button2.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "This button will launch my Scores app!",
-                        Toast.LENGTH_LONG).show();
-            }
-        });
-
-        button3.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "This button will launch my Library app!",
-                        Toast.LENGTH_LONG).show();
-            }
-        });
-
-        button4.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "This button will launch myBuild it bigger app!",
-                        Toast.LENGTH_LONG).show();
-            }
-        });
-
-        button5.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "This button will launch my XYZ reader app!",
-                        Toast.LENGTH_LONG).show();
-            }
-        });
-
-        button6.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "This button will launch my Capstone my own app!",
-                        Toast.LENGTH_LONG).show();
-            }
-        });
-
-
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
     }
 
 
